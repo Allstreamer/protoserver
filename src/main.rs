@@ -43,11 +43,7 @@ async fn process(stream: TcpStream) {
 
         if ready.is_writable() {
             match stream.try_write(&echo_data) {
-                Ok(_) => {
-                    if echo_data.contains(&10u8) {
-                        break;
-                    }
-                },
+                Ok(_) => {},
                 Err(ref e) if e.kind() == io::ErrorKind::WouldBlock => {
                     continue
                 },
