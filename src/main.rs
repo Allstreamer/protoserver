@@ -27,6 +27,9 @@ async fn process(stream: TcpStream) {
             let mut read_buf = vec![0; 1024];
             match stream.try_read(&mut read_buf) {
                 Ok(n) => {
+                    if n == 0 {
+                        continue;
+                    }
                     echo_data.extend_from_slice(&read_buf[0..n]);
                     println!("{:?}", echo_data);
                 },
