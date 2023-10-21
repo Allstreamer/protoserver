@@ -3,8 +3,12 @@ name = "protoserver"
 version = "0.1.0"
 edition = "2021"
 
-# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+# Enable high optimizations for dependencies:
+[profile.dev.package."*"]
+opt-level = 3
 
 [dependencies]
-anyhow = "1.0.72"
-tokio = { version = "1.30.0", features = ["full"] }
+primal = "0.3.2"
+serde = { version = "1.0.189", features = ["derive"] }
+serde_json = "1.0.107"
+tokio = { version = "1.33.0", features = ["full"] }
